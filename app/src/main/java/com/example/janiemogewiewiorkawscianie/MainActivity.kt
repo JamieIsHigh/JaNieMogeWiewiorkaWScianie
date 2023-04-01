@@ -11,9 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
-        val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
-
         var textBru = findViewById<TextView>(R.id.textView4)
         var textKMP = findViewById<TextView>(R.id.textView5)
         var textBM = findViewById<TextView>(R.id.textView6)
@@ -21,24 +18,39 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.button)
 
-        fun bruteForce() {
+        fun bruteForce(ilra: Int) {
+            var i = 0
+            while (i < ilra) {
 
+            }
         }
 
-        fun KMP() {
+        fun KMP(ilra: Int) {
+            var i = 0
+            while (i < ilra) {
 
+            }
         }
 
-        fun BM() {
+        fun BM(ilra: Int) {
+            var i = 0
+            while (i < ilra) {
 
+            }
         }
 
-        fun RK() {
+        fun RK(ilra: Int) {
+            var i = 0
+            while (i < ilra) {
 
+            }
         }
 
         btn.setOnClickListener {
-            textBM.text = ileraz.toString()
+            if (findViewById<EditText>(R.id.editTextNumber).text.toString() != "" && findViewById<EditText>(R.id.editTextNumber2).text.toString() != "") {
+                val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
+                val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
+            }
         }
 
     }
