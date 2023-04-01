@@ -47,9 +47,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn.setOnClickListener {
-            if (findViewById<EditText>(R.id.editTextNumber).text.toString() != "" && findViewById<EditText>(R.id.editTextNumber2).text.toString() != "") {
+            if (findViewById<EditText>(R.id.editTextNumber).text.toString() != "" && findViewById<EditText>(R.id.editTextNumber2).text.toString() != "" && findViewById<EditText>(R.id.editTextTextPersonName).text.toString() != "") {
                 val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
                 val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
+                val wzor = findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
             }
         }
 
