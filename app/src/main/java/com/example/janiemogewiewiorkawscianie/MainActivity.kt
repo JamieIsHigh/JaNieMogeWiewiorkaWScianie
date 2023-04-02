@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +60,18 @@ class MainActivity : AppCompatActivity() {
                 val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
                 val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
                 val wzor = findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
+
+                val alphabet = "abcdefghijklmnopqrstuvwxyz"
+                val lancuch = (1..iledan)
+                    .map { alphabet[Random.nextInt(alphabet.length)] }
+                    .joinToString("")
+
+                /* TU
+                * SIĘ
+                * BĘDZIE
+                * DZIAŁA
+                * MAGIA */
+
             } else {
                 Toast.makeText(this@MainActivity, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show()
             }
