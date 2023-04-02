@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val textKMP = findViewById<TextView>(R.id.textView5)
         val textBM = findViewById<TextView>(R.id.textView6)
         val textRK = findViewById<TextView>(R.id.textView7)
+        val textBol = findViewById<TextView>(R.id.textView9)
 
         val btn = findViewById<Button>(R.id.button)
 
@@ -30,9 +31,11 @@ class MainActivity : AppCompatActivity() {
                     j++
                 }
                 if (j == m) {
+                    textBol.text = "TAK"
                     return
                 }
             }
+            textBol.text = "NIE"
         }
 
         fun prefi(wzorzec: String): IntArray {
