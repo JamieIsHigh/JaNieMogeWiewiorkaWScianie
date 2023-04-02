@@ -18,10 +18,17 @@ class MainActivity : AppCompatActivity() {
 
         val btn = findViewById<Button>(R.id.button)
 
-        fun bruteForce(ilra: Int) {
-            var i = 0
-            while (i < ilra) {
-
+        fun bruteForce(text: String, wzorzec: String){
+            val n = text.length
+            val m = wzorzec.length
+            for (i in 0..n-m) {
+                var j = 0
+                while (j < m && text[i + j] == wzorzec[j]) {
+                    j++
+                }
+                if (j == m) {
+                    return
+                }
             }
         }
 
