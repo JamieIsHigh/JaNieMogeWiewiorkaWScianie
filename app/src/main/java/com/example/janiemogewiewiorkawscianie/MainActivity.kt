@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity() {
                 val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
                 val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
                 val wzor = findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
+            } else {
+                Toast.makeText(this@MainActivity, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show()
             }
         }
 
