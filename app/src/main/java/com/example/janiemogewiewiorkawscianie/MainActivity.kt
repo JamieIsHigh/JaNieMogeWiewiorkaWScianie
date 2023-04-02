@@ -83,10 +83,27 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        fun BM(ilra: Int) {
-            var i = 0
-            while (i < ilra) {
+        fun BM(text: String, wzorzec: String) {
+            var n = text.length
+            val m = wzorzec.length
+            val b = IntArray(256) { -1 }
+            for (i in 0 until m) {
+                b[wzorzec[i].toInt()] = i
+            }
 
+            var i = m - 1
+            var j = m - 1
+            while (i < n) {
+                if (text[i] == wzorzec[j]) {
+                    if (j == 0) {
+                        return
+                    }
+                    i--
+                    j--
+                } else {
+                    i += m - java.lang.Math.min(j, 1 + b[text[i].toInt()])
+                    j = m - 1
+                }
             }
         }
 
