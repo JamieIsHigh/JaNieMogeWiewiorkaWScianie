@@ -61,16 +61,23 @@ class MainActivity : AppCompatActivity() {
                 val iledan = findViewById<EditText>(R.id.editTextNumber2).text.toString().toInt()
                 val wzor = findViewById<EditText>(R.id.editTextTextPersonName).text.toString()
 
-                val alphabet = "abcdefghijklmnopqrstuvwxyz"
-                val lancuch = (1..iledan)
-                    .map { alphabet[Random.nextInt(alphabet.length)] }
-                    .joinToString("")
+                if (iledan < wzor.length) {
+                    Toast.makeText(this@MainActivity, "Wzorzec nie może być dłuższy od tekstu!", Toast.LENGTH_LONG).show()
+                }
+                else {
+                    val alphabet = "abcdefghijklmnopqrstuvwxyz"
+                    val lancuch = (1..iledan)
+                        .map { alphabet[Random.nextInt(alphabet.length)] }
+                        .joinToString("")
 
-                /* TU
-                * SIĘ
-                * BĘDZIE
-                * DZIAŁA
-                * MAGIA */
+                    textRK.text = lancuch
+
+                    /* TU
+                    * SIĘ
+                    * BĘDZIE
+                    * DZIAŁA
+                    * MAGIA */
+                }
 
             } else {
                 Toast.makeText(this@MainActivity, "Uzupełnij wszystkie pola!", Toast.LENGTH_SHORT).show()
