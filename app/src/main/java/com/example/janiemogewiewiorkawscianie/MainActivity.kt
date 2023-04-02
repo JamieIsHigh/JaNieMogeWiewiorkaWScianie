@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     j++
                 }
                 if (j == m) {
-                    Toast.makeText(this@MainActivity, "ZROBIONE", Toast.LENGTH_LONG).show()
+                    return
                 }
             }
         }
@@ -75,8 +75,13 @@ class MainActivity : AppCompatActivity() {
                 else {
                     val ster = strGenerator(iledan)
                     textRK.text = ster
+                    var i = 0
+                    while (i < ileraz) {
+                        bruteForce(ster, wzor)
+                        i++
 
-                    bruteForce(ster, wzor)
+                    }
+                    Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
                     /* TU
                     * SIĘ
                     * BĘDZIE
