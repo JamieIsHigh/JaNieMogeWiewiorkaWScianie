@@ -181,12 +181,16 @@ class MainActivity : AppCompatActivity() {
                     total = czasStop-czasStart
                     textBM.text = "Boyera-Moorea: " + total.toString() + " ms"
 
+                    czasStart = System.currentTimeMillis()
+                    while (i < ileraz) {
+                        RK(ster, wzor)
+                        i++
+                    }
+                    czasStop = System.currentTimeMillis()
+                    total = czasStop-czasStart
+                    textRK.text = "Rabina-Karpa: " + total.toString() + " ms"
+
                     Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
-                    /* TU
-                    * SIĘ
-                    * BĘDZIE
-                    * DZIAŁA
-                    * MAGIA */
                 }
 
             } else {
