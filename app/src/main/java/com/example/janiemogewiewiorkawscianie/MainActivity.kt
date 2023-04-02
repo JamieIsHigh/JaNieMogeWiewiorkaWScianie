@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var textBru = findViewById<TextView>(R.id.textView4)
-        var textKMP = findViewById<TextView>(R.id.textView5)
-        var textBM = findViewById<TextView>(R.id.textView6)
-        var textRK = findViewById<TextView>(R.id.textView7)
+        val textBru = findViewById<TextView>(R.id.textView4)
+        val textKMP = findViewById<TextView>(R.id.textView5)
+        val textBM = findViewById<TextView>(R.id.textView6)
+        val textRK = findViewById<TextView>(R.id.textView7)
 
         val btn = findViewById<Button>(R.id.button)
 
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
 
         fun BM(text: String, wzorzec: String) {
-            var n = text.length
+            val n = text.length
             val m = wzorzec.length
             val b = IntArray(256) { -1 }
             for (i in 0 until m) {
@@ -149,45 +149,46 @@ class MainActivity : AppCompatActivity() {
                 else {
                     val ster = strGenerator(iledan)
                     var i = 0
-                    var czasStart: Long = 0
-                    var czasStop: Long = 1
+                    var czStart: Long = 0
+                    var czStop: Long = 1
                     var total: Long = 0
-                    czasStart = System.currentTimeMillis()
+                    czStart = System.currentTimeMillis()
                     while (i < ileraz) {
                         bruteForce(ster, wzor)
                         i++
                     }
-                    czasStop = System.currentTimeMillis()
-                    total = czasStop-czasStart
+                    czStop = System.currentTimeMillis()
+                    total = czStop-czStart
                     textBru.text = "Bruteforce: " + total.toString() + " ms"
 
                     i = 0
-                    czasStart = System.currentTimeMillis()
+                    czStart = System.currentTimeMillis()
                     while (i < ileraz) {
                         KMP(ster, wzor)
                         i++
                     }
-                    czasStop = System.currentTimeMillis()
-                    total = czasStop-czasStart
+                    czStop = System.currentTimeMillis()
+                    total = czStop-czStart
                     textKMP.text = "Knutha-Morrisa-Patta: " + total.toString() + " ms"
 
                     i = 0
-                    czasStart = System.currentTimeMillis()
+                    czStart = System.currentTimeMillis()
                     while (i < ileraz) {
                         BM(ster, wzor)
                         i++
                     }
-                    czasStop = System.currentTimeMillis()
-                    total = czasStop-czasStart
+                    czStop = System.currentTimeMillis()
+                    total = czStop-czStart
                     textBM.text = "Boyera-Moorea: " + total.toString() + " ms"
 
-                    czasStart = System.currentTimeMillis()
+                    i = 0
+                    czStart = System.currentTimeMillis()
                     while (i < ileraz) {
                         RK(ster, wzor)
                         i++
                     }
-                    czasStop = System.currentTimeMillis()
-                    total = czasStop-czasStart
+                    czStop = System.currentTimeMillis()
+                    total = czStop-czStart
                     textRK.text = "Rabina-Karpa: " + total.toString() + " ms"
 
                     Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
