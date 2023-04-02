@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import kotlin.random.Random
+import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,10 +108,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun RK(ilra: Int) {
-            var i = 0
-            while (i < ilra) {
+        fun RK(text: String, wzorzec: String) {
+            val pri = 101
+            val n = text.length
+            val m = wzorzec.length
+            val patternHash = wzorzec.hashCode()
+            var textHash = 0
+            for (i in 0 until m) {
+                textHash += (text[i].toInt() * pri.toDouble().pow(m - i - 1).toInt())
+            }
 
+            for (i in 0..n - m) {
+                if (textHash == patternHash && text.substring(i, i + m) == wzorzec) {
+                    return
+                }
+                if (i < n - m) {
+                    textHash = (textHash - (text[i].toInt() * pri.toDouble().pow(m - 1).toInt()))
+                    textHash = textHash * pri + text[i + m].toInt()
+                }
             }
         }
 
@@ -155,6 +170,16 @@ class MainActivity : AppCompatActivity() {
                     czasStop = System.currentTimeMillis()
                     total = czasStop-czasStart
                     textKMP.text = "Knutha-Morrisa-Patta: " + total.toString() + " ms"
+
+                    i = 0
+                    czasStart = System.currentTimeMillis()
+                    while (i < ileraz) {
+                        BM(ster, wzor)
+                        i++
+                    }
+                    czasStop = System.currentTimeMillis()
+                    total = czasStop-czasStart
+                    textBM.text = "Boyera-Moorea: " + total.toString() + " ms"
 
                     Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
                     /* TU
