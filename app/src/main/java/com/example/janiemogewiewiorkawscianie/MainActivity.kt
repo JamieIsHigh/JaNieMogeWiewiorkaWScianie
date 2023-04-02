@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     j++
                 }
                 if (j == m) {
-                    return
+                    Toast.makeText(this@MainActivity, "ZROBIONE", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -55,6 +55,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        fun strGenerator(ildan: Int): String {
+            val alphabet = "abcdefghijklmnopqrstuvwxyz"
+            val lancuch = (1..ildan)
+                .map { alphabet[Random.nextInt(alphabet.length)] }
+                .joinToString("")
+            return lancuch
+        }
+
         btn.setOnClickListener {
             if (findViewById<EditText>(R.id.editTextNumber).text.toString() != "" && findViewById<EditText>(R.id.editTextNumber2).text.toString() != "" && findViewById<EditText>(R.id.editTextTextPersonName).text.toString() != "") {
                 val ileraz = findViewById<EditText>(R.id.editTextNumber).text.toString().toInt()
@@ -65,13 +73,10 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Wzorzec nie może być dłuższy od tekstu!", Toast.LENGTH_LONG).show()
                 }
                 else {
-                    val alphabet = "abcdefghijklmnopqrstuvwxyz"
-                    val lancuch = (1..iledan)
-                        .map { alphabet[Random.nextInt(alphabet.length)] }
-                        .joinToString("")
+                    val ster = strGenerator(iledan)
+                    textRK.text = ster
 
-                    textRK.text = lancuch
-
+                    bruteForce(ster, wzor)
                     /* TU
                     * SIĘ
                     * BĘDZIE
