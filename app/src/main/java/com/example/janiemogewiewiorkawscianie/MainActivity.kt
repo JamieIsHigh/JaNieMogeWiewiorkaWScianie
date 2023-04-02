@@ -74,13 +74,19 @@ class MainActivity : AppCompatActivity() {
                 }
                 else {
                     val ster = strGenerator(iledan)
-                    textRK.text = ster
                     var i = 0
+                    var czasStart: Long = 0
+                    var czasStop: Long = 1
+                    var total: Long = 0
+                    czasStart = System.currentTimeMillis()
                     while (i < ileraz) {
                         bruteForce(ster, wzor)
                         i++
-
                     }
+                    czasStop = System.currentTimeMillis()
+                    total = czasStop-czasStart
+                    textBru.text = "Bruteforce: " + total.toString() + " ms"
+
                     Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
                     /* TU
                     * SIĘ
