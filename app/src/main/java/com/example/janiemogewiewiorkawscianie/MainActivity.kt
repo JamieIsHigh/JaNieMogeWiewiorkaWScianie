@@ -34,12 +34,54 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fun KMP(ilra: Int) {
-            var i = 0
-            while (i < ilra) {
+        fun prefi(wzorzec: String): IntArray {
+            val m = wzorzec.length
+            val lps = IntArray(m)
+            var l = 0
+            var i = 1
 
+            while (i < m) {
+                when {
+                    wzorzec[i] == wzorzec[l] -> {
+                        l++
+                        lps[i] = l
+                        i++
+                    }
+                    l > 0 -> l = lps[l - 1]
+                    else -> {
+                        lps[i] = 0
+                        i++
+                    }
+                }
             }
+
+            return lps
         }
+
+        fun KMP(text: String, wzorzec: String) {
+                val n = text.length
+                val m = wzorzec.length
+                val lps = prefi(wzorzec)
+
+                var i = 0
+                var j = 0
+                while (i < n) {
+                    when {
+                        wzorzec[j] == text[i] -> {
+                            i++
+                            j++
+                        }
+                        j > 0 -> j = lps[j - 1]
+                        else -> i++
+                    }
+
+                    if (j == m) {
+                        return
+                    }
+                }
+            }
+
+
 
         fun BM(ilra: Int) {
             var i = 0
@@ -86,6 +128,16 @@ class MainActivity : AppCompatActivity() {
                     czasStop = System.currentTimeMillis()
                     total = czasStop-czasStart
                     textBru.text = "Bruteforce: " + total.toString() + " ms"
+
+                    i = 0
+                    czasStart = System.currentTimeMillis()
+                    while (i < ileraz) {
+                        KMP(ster, wzor)
+                        i++
+                    }
+                    czasStop = System.currentTimeMillis()
+                    total = czasStop-czasStart
+                    textKMP.text = "Knutha-Morrisa-Patta: " + total.toString() + " ms"
 
                     Toast.makeText(this@MainActivity, "KONIEC", Toast.LENGTH_SHORT).show()
                     /* TU
